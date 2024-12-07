@@ -10,18 +10,18 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-      - run: docker build -t rallycoding/react-test-up -f ./client/Dockerfile.dev ./client
-      - run: docker run -e CI=true rallycoding/react-test-up npm test
+      - run: docker build -t VadimZavgorodny/react-test-up -f ./client/Dockerfile.dev ./client
+      - run: docker run -e CI=true VadimZavgorodny/react-test-up npm test
 
-      - run: docker build -t rallycoding/multi-client-up ./client
-      - run: docker build -t rallycoding/multi-nginx-up ./nginx
-      - run: docker build -t rallycoding/multi-server-up ./server
-      - run: docker build -t rallycoding/multi-worker-up ./worker
+      - run: docker build -t VadimZavgorodny/multi-client-up ./client
+      - run: docker build -t VadimZavgorodny/multi-nginx-up ./nginx
+      - run: docker build -t VadimZavgorodny/multi-server-up ./server
+      - run: docker build -t VadimZavgorodny/multi-worker-up ./worker
 
-      - run: docker push rallycoding/multi-client-up
-      - run: docker push rallycoding/multi-nginx-up
-      - run: docker push rallycoding/multi-server-up
-      - run: docker push rallycoding/multi-worker-up
+      - run: docker push VadimZavgorodny/multi-client-up
+      - run: docker push VadimZavgorodny/multi-nginx-up
+      - run: docker push VadimZavgorodny/multi-server-up
+      - run: docker push VadimZavgorodny/multi-worker-up
 
       - name: Generate deployment package
         run: zip -r deploy.zip . -x '*.git*'
